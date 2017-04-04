@@ -8,7 +8,7 @@ int father[NN];
 int ranki[NN] = {0};
 /*查找操作，返回父节点，顶结点*/
 int find(int x)
-{
+{/*路径压缩*/
     if(x != father[x])
         father[x] = find(father[x]);
     return father[x];
@@ -19,6 +19,7 @@ void unioni(int x, int y)
     int r1 = find(x);
     int r2 = find(y);
     if(r1 == r2)return ;
+    /*启发式合并*/
     if(ranki[r1] < ranki[r2])
         father[r2] = r1;
     else{
