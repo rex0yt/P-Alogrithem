@@ -5,8 +5,10 @@
 ***************************************/
 #include <iostream>
 using namespace std;
+
 const int maxnum = 100;
 const int maxint = 999999;
+
 void Dijkstra(int n,int v,int *dist,int *prev,int c[maxnum][maxnum]){
     bool s[maxnum];//判断是否已存入该点到S集合中
     for(int i=1;i<=n;++i){
