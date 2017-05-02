@@ -29,27 +29,24 @@ long long Cantor(int *a, int n)
 }
 int* unCantor(long long order, int n)
 {
-    int un[n+1];            /*并查集 判断数字是否使用过*/
+    bool vis[n + 1];            /*判断数字是否使用过*/
     int *arr;               /*保存结果*/
     int res;
     int p = 0;
-    arr = new int[n+1];
-    for(int i=0; i<=n; i++) /*初始化并查集*/
-    {
-        un[i] = 0;
-    }
+    arr = new int[n + 1];
+    memset(vis, 0, sizeof(vis));
     order --;
     for(int i=n-1; i>0; i--)
     {
         res = order / fac[i];
-        while(un[res] != 0)res++;
-
-        arr[p ++] = res + 1;
+        res ++;
+        while(vis[res])res++;
+        arr[p ++] = res;
         order %= fac[i];
-        un[res] = res;
+        vis[res] = 1;
     }
-    res = 0;
-    while(!un[res])res++;
+    res = 1;
+    while(vis[res])res++;
     arr[p] = res;
     return arr;
 }

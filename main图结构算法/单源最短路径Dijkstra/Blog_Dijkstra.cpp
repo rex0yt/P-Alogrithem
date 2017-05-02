@@ -3,14 +3,16 @@
 * Author:   Tanky Woo
 * Blog:     www.WuTianQi.com
 ***************************************/
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-const int maxnum = 100;
-const int maxint = 999999;
+const int N = 100;
+const int maxint = 0xfffffff;
 
-void Dijkstra(int n,int v,int *dist,int *prev,int c[maxnum][maxnum]){
-    bool s[maxnum];//判断是否已存入该点到S集合中
+void Dijkstra(int n,int v,int *dist,int *prev,int c[N][N])
+{
+    bool s[N];//判断是否已存入该点到S集合中
     for(int i=1;i<=n;++i){
     	dist[i]=c[v][i];
         s[i]=0;//初始都未用过该点
@@ -43,7 +45,7 @@ void Dijkstra(int n,int v,int *dist,int *prev,int c[maxnum][maxnum]){
     }
 }
 void searchPath(int *prev,int v, int u){
-    int que[maxnum];
+    int que[N];
     int tot=1;
     que[tot]=u;
     tot++;
@@ -58,11 +60,11 @@ void searchPath(int *prev,int v, int u){
         if(i!=1)cout<<que[i]<<" -> ";
         else cout<<que[i]<<endl;
 }
-int main(int argc,int **argv){
+int main(){
 //各数组都从下标1开始
-    int dist[maxnum];//表示当前点到源点的最短路径长度
-    int prev[maxnum];//记录当前点的前一个结点
-    int c[maxnum][maxnum];//记录图的两点间路径长度
+    int dist[N];//表示当前点到源点的最短路径长度
+    int prev[N];//记录当前点的前一个结点
+    int c[N][N];//记录图的两点间路径长度
     int n,line;//图的结点数和路径数
     cin >> n;//输入结点数
     cin >> line;// 输入路径数
